@@ -1,0 +1,103 @@
+import Link from "next/link";
+import { Suspense } from "react";
+import { ArrowRight, CalendarX } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import EventCard, { EventCardSkeletonList } from "@/components/reusable/EventCard";
+import { EventService } from "@/services/event-service";
+import EmptyState from "../reusable/EmptyState";
+
+async function UpcomingEventsGrid() {
+  let events: Awaited<ReturnType<typeof EventService.getEvents>>["data"] = [];
+
+  try {
+    const { data } = await EventService.getEvents({ limit: 8 });
+    events = data;
+  } catch (error) {
+    console.error("Failed to load random events:", error);
+  }
+
+  if (!events || events.length === 0) {
+    return <EmptyState
+      icon={<CalendarX className="h-10 w-10 text-primary drop-shadow-sm" strokeWidth={1.5} />}
+      title="Belum Ada Event"
+      description="Saat ini belum ada event yang tersedia"
+    />;
+  }
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+      {events.map((event) => (
+        <EventCard
+          key={event.id}
+          title={event.title}
+          category={event.type || ""}
+          date={event.start_date || ""}
+          location={event.is_online ? "Online" : event.address_title || ""}
+          price={event.ticket_price || 0}
+          originalPrice={event.ticket_price || 0}
+          organizer={event.organizer_name || ""}
+          image={event.image_url || "/placeholder-event.jpg"}
+          slug={event.slug}
+          isHot={false}
+          isOnline={event.is_online}
+          isRtPintar={event.type === "internal"}
+          ticketSold={event.total_sold || 0}
+          maxQuota={event.max_capacity || 0}
+        />
+      ))}
+    </div>
+  );
+}
+
+export default function UpcomingEvents() {
+  return (
+    <section className="relative overflow-hidden py-12 md:py-16 bg-[#f9fafb]">
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            opacity: 0.24,
+          }}
+        />
+        <div className="absolute top-8 right-8 h-[21rem] w-[21rem] rounded-full bg-[#002cee14]" />
+        <div className="absolute bottom-8 left-8 h-[16rem] w-[16rem] rounded-full bg-[#6366f112]" />
+      </div>
+      <div className="relative z-10 container mx-auto px-4 md:px-8 lg:px-12 w-full max-w-7xl">
+        {/* HEADER */}
+        <div className="flex flex-col gap-3 mb-8">
+          {/* Row 1: Title + Button */}
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl md:text-3xl font-bold text-accent">
+              Event Segera Hadir
+            </h2>
+            <Button variant="link" asChild className="px-0 md:px-4">
+              <Link
+                href="/events?sort=terbaru"
+                className="flex items-center gap-1"
+              >
+                Lihat Semua <ArrowRight size={18} />
+              </Link>
+            </Button>
+          </div>
+
+          <p className="text-muted">
+            Jangan lewatkan event seru yang akan datang
+          </p>
+        </div>
+
+        <Suspense fallback={
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+            <EventCardSkeletonList count={8} />
+          </div>
+        }>
+          <UpcomingEventsGrid />
+        </Suspense>
+      </div>
+    </section>
+  );
+}
+
+
