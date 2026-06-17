@@ -7,15 +7,15 @@ export default function LandingFooter() {
   return (
     <footer className="w-full bg-slate-900 text-slate-200 py-10">
       <div className="container mx-auto px-4 md:px-8 lg:px-12 flex flex-col gap-10 w-full max-w-7xl">
-        {/* === BAGIAN ATAS (GRID UTAMA) === */}
+
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          {/* KOLOM 1: BRAND & SOSIAL MEDIA (Lebar 5 kolom di desktop) */}
+
           <div className="md:col-span-5 flex flex-col gap-6">
             <div className="space-y-3">
               <div className="inline-block">
-                <div className="font-bold text-2xl md:text-3xl tracking-tight text-white flex items-center gap-2">
+                <h2 className="font-bold text-2xl md:text-3xl tracking-tight text-white flex items-center gap-2">
                   <span>🎉</span> kumpul.in
-                </div>
+                </h2>
               </div>
               <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-sm">
                 Ciptakan eventmu dan jangkau ribuan peserta dengan mudah.
@@ -23,7 +23,7 @@ export default function LandingFooter() {
               </p>
             </div>
 
-            {/* Social Icons */}
+
             <div className="flex gap-2">
               <SocialButton
                 href="https://instagram.com"
@@ -37,9 +37,9 @@ export default function LandingFooter() {
             </div>
           </div>
 
-          {/* KOLOM 2: LINK SECTIONS (Lebar 7 kolom, dibagi rata) */}
+
           <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
-            {/* Group 1 */}
+
             <div className="flex flex-col gap-4">
               <h4 className="font-semibold text-white">Tentang</h4>
               <div className="flex flex-col gap-2 items-start">
@@ -49,7 +49,7 @@ export default function LandingFooter() {
               </div>
             </div>
 
-            {/* Group 2 */}
+
             <div className="flex flex-col gap-4">
               <h4 className="font-semibold text-white">Legal</h4>
               <div className="flex flex-col gap-2 items-start">
@@ -59,7 +59,7 @@ export default function LandingFooter() {
               </div>
             </div>
 
-            {/* Group 3 (Opsional/Coming Soon) */}
+
             <div className="flex flex-col gap-4">
               <h4 className="font-semibold text-white">Hubungi</h4>
               <div className="flex flex-col gap-2 items-start">
@@ -70,7 +70,7 @@ export default function LandingFooter() {
           </div>
         </div>
 
-        {/* === BAGIAN BAWAH (COPYRIGHT) === */}
+
         <div className="flex flex-col gap-6">
           <Separator className="bg-slate-800" />
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
@@ -79,7 +79,7 @@ export default function LandingFooter() {
               2025 kumpul.in. Hak cipta dilindungi.
             </p>
             <div className="flex gap-6">
-              {/* Link tambahan di footer bottom jika perlu */}
+
               <span className="hover:text-slate-300 cursor-pointer transition-colors">
                 Indonesia
               </span>

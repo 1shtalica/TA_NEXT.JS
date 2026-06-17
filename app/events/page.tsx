@@ -13,6 +13,9 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 export const metadata = {
   title: "Cari Event - Kumpulin",
   description: "Temukan berbagai acara seru di sekitarmu.",
+  alternates: {
+    canonical: "/events",
+  },
 };
 
 const getProvinceFilter = (value: string) => {
@@ -89,9 +92,13 @@ export default async function ExplorePage(props: {
 
       <LandingNavbar />
       <main className="relative z-10 container mx-auto w-full max-w-7xl grow px-4 pb-20 md:px-8 lg:px-12">
+          <Suspense fallback={<div className="w-full h-32" />}>
           <SearchBar />
+          </Suspense>
         <div className="mb-8 relative z-20">
-          <FilterBar />
+          <Suspense fallback={<div className="w-full h-16" />}>
+            <FilterBar />
+          </Suspense>
         </div>
 
         {error && (

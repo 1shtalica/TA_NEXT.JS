@@ -128,7 +128,7 @@ function CyclingWord() {
     );
 }
 
-/** Desktop only – stacked card deck */
+
 function HeroEventCardGraphic({
     accent,
     compact = false,
@@ -332,7 +332,7 @@ function EventCardStack({ events }: { events: HomeEventCard[] }) {
     );
 }
 
-/** Mobile only – horizontal scrolling event cards */
+
 function MobileEventStrip({ events }: { events: HomeEventCard[] }) {
     return (
         <div className="w-full lg:hidden">
@@ -350,7 +350,7 @@ function MobileEventStrip({ events }: { events: HomeEventCard[] }) {
                     Lihat semua <ChevronRight size={13} />
                 </Link>
             </div>
-            {/* Horizontally scrollable cards with right-fade mask */}
+
             <div className="relative">
                 <div className="flex gap-3 overflow-x-auto scrollbar-hide px-4 sm:px-6 pb-2">
                     {events.map((ev, i) => {
@@ -413,7 +413,7 @@ function MobileEventStrip({ events }: { events: HomeEventCard[] }) {
                         );
                     })}
                 </div>
-                {/* Right fade mask */}
+
                 <div className="absolute right-0 top-0 h-full w-12 bg-linear-to-l from-[#f9fafb] to-transparent pointer-events-none" />
             </div>
         </div>
@@ -469,7 +469,7 @@ export default function HeroSection() {
 
     return (
         <section className="relative w-full overflow-hidden bg-[#f9fafb] pt-4">
-            {/* ── Dot Pattern Background ── */}
+
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <div
                     className="absolute inset-0"
@@ -502,12 +502,12 @@ export default function HeroSection() {
                 </svg>
             </div>
 
-            {/* ── Main Split Layout ── */}
+
             <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-12 md:py-16 lg:py-20">
                 <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-16">
-                    {/* ── LEFT: Editorial Headline ── */}
+
                     <div className="flex-1 flex flex-col gap-5 lg:gap-7 w-full lg:max-w-[58%]">
-                        {/* Live indicator pill */}
+
                         <div className="inline-flex items-center gap-2 self-start">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -518,8 +518,8 @@ export default function HeroSection() {
                             </span>
                         </div>
 
-                        {/* Headline — scaled down on mobile */}
-                        <div className="text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] lg:text-[3.8rem] font-extrabold text-slate-900 leading-[1.1] tracking-[-0.02em]">
+
+                        <h1 className="text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] lg:text-[3.8rem] font-extrabold text-slate-900 leading-[1.1] tracking-[-0.02em]">
                             Satu tempat
                             <br />
                             semua{" "}
@@ -530,16 +530,16 @@ export default function HeroSection() {
                             <span className="text-slate-300">
                                 di Indonesia.
                             </span>
-                        </div>
+                        </h1>
 
-                        {/* Subtitle */}
+
                         <p className="text-sm sm:text-base lg:text-lg text-slate-500 leading-relaxed max-w-lg font-medium">
                             Dari konser jazz malam hari hingga hackathon
                             teknologi — temukan, ikuti, dan beli tiket dalam
                             satu klik.
                         </p>
 
-                        {/* Search bar */}
+
                         <div className="flex flex-col gap-2.5 w-full max-w-lg">
                             <div className="flex items-center h-12 sm:h-13 bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/15 transition-all duration-200">
                                 <div className="flex items-center justify-center px-3 sm:px-4 h-full text-slate-400 shrink-0">
@@ -564,7 +564,7 @@ export default function HeroSection() {
                                 </Button>
                             </div>
 
-                            {/* Quick tags — 4 on desktop, 3 on mobile */}
+
                             <div className="flex items-center gap-1.5 flex-wrap">
                                 <span className="text-xs text-slate-400">
                                     Coba:
@@ -592,7 +592,7 @@ export default function HeroSection() {
                             </div>
                         </div>
 
-                        {/* Stats — 2×2 grid on mobile, single row on sm+ */}
+
                         <div className="grid grid-cols-2 sm:flex sm:flex-row sm:items-center gap-3 sm:gap-5">
                             {STATS.map(({ v, l, icon: Icon }) => (
                                 <div
@@ -614,7 +614,7 @@ export default function HeroSection() {
                             ))}
                         </div>
 
-                        {/* Category strip — with right-fade mask hinting scroll */}
+
                         <div>
                             <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2.5">
                                 Jelajah kategori
@@ -647,13 +647,13 @@ export default function HeroSection() {
                                         ),
                                     )}
                                 </div>
-                                {/* Fade hint at right edge */}
+
                                 <div className="absolute right-0 top-0 h-full w-10 bg-linear-to-l from-[#f9fafb] to-transparent pointer-events-none" />
                             </div>
                         </div>
                     </div>
 
-                    {/* ── RIGHT: Live Event Card Stack (desktop only) ── */}
+
                     <div className="hidden lg:flex flex-col items-center flex-1 max-w-[38%] gap-6">
                         <div className="self-start flex items-center gap-2">
                             <Ticket size={14} className="text-primary" />
@@ -672,7 +672,7 @@ export default function HeroSection() {
                 </div>
             </div>
 
-            {/* ── Mobile Event Strip (shows between content & marquee on mobile) ── */}
+
             <div className="relative z-10 pb-8 lg:hidden">
                 <MobileEventStrip events={heroEvents} />
             </div>

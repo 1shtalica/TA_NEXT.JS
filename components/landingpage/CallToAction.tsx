@@ -58,9 +58,9 @@ export default function CallToAction() {
                 Mulai sebagai organizer
               </div>
               <div className="space-y-2">
-                <div className="text-2xl font-bold leading-tight text-slate-950 md:text-3xl">
+                <h2 className="text-2xl font-bold leading-tight text-slate-950 md:text-3xl">
                   Punya event yang ingin dipublikasikan?
-                </div>
+                </h2>
                 <p className="max-w-xl text-sm leading-relaxed text-slate-600 md:text-base">
                   Buat halaman event, atur tiket, dan kelola peserta dari satu tempat.
                 </p>
@@ -72,7 +72,7 @@ export default function CallToAction() {
               size="lg"
               className="h-11 self-start rounded-xl px-5 text-sm font-semibold md:self-center"
             >
-              {/* ⚠️ TESTING APP: link menggunakan "#" agar tidak 404 */}
+
               <Link href="#">
                 Daftar Sekarang
                 <ArrowRight size={17} />

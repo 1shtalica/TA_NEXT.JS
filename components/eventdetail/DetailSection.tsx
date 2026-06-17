@@ -102,9 +102,9 @@ export default function DetailSection({ event }: DetailSectionProps) {
 
           <div className="flex items-start gap-3 py-3 md:py-4">
             <div className="mt-1 h-9 w-1 bg-primary rounded-full shrink-0"></div>
-            <div className="text-3xl md:text-4xl font-bold text-slate-950 leading-[1.12] tracking-normal">
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-950 leading-[1.12] tracking-normal">
               {event.title}
-            </div>
+            </h1>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">

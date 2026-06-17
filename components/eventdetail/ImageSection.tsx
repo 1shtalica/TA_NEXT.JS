@@ -11,7 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
+import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 
 export default function ImageSection({ event }: { event: Event }) {
@@ -59,7 +59,7 @@ export default function ImageSection({ event }: { event: Event }) {
 
   return (
     <div ref={sectionRef} className="relative w-full">
-      {/* Mesh Gradient Background */}
+
       {isVisible && (
         <div
           className="fixed top-0 left-0 w-screen pointer-events-none transition-opacity duration-300 ease-out"
@@ -132,9 +132,13 @@ export default function ImageSection({ event }: { event: Event }) {
                                       xl:h-120
                                       max-h-120"
                       >
-                        <img
+                        <Image
                           src={src}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                          alt={`${event.title} - Poster ${index + 1}`}
+                          fill
+                          className="object-cover hover:scale-105 transition-transform duration-700"
+                          priority={index === 0}
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
                         />
                       </div>
 

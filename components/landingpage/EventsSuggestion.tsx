@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight, CalendarX } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import EventCard from "../reusable/EventCard";
+import EventCard, { EventCardSkeleton } from "../reusable/EventCard";
 import { EventService } from "@/services/event-service";
 import EmptyState from "@/components/reusable/EmptyState";
 
@@ -71,9 +71,9 @@ export default function EventsSuggestion() {
       <div className="relative z-10 container mx-auto px-4 md:px-8 lg:px-12 w-full max-w-7xl">
         <div className="flex flex-col gap-2 mb-8 md:mb-12">
           <div className="flex items-center justify-between">
-            <div className="text-xl md:text-3xl font-bold text-accent">
+            <h2 className="text-xl md:text-3xl font-bold text-accent">
               Event Pilihan
-            </div>
+            </h2>
             <Button variant="link" asChild>
               <Link href="/events?sort=Populer">
                 Lihat Semua <ArrowRight size={18} />
@@ -85,7 +85,17 @@ export default function EventsSuggestion() {
           </p>
         </div>
 
-        <EventsSuggestionGrid />
+        <Suspense fallback={
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+            {[1, 2, 3, 4].map((index) => (
+              <div key={index} className={cn(index > 1 && "hidden md:block", index === 4 && "lg:hidden xl:block")}>
+                <EventCardSkeleton />
+              </div>
+            ))}
+          </div>
+        }>
+          <EventsSuggestionGrid />
+        </Suspense>
       </div>
     </section>
   );

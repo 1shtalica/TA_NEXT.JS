@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowRight, CalendarX } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import EventCard from "@/components/reusable/EventCard";
+import EventCard, { EventCardSkeletonList } from "@/components/reusable/EventCard";
 import { EventService } from "@/services/event-service";
 import EmptyState from "../reusable/EmptyState";
 
@@ -66,13 +66,13 @@ export default function UpcomingEvents() {
         <div className="absolute bottom-8 left-8 h-[16rem] w-[16rem] rounded-full bg-[#6366f112]" />
       </div>
       <div className="relative z-10 container mx-auto px-4 md:px-8 lg:px-12 w-full max-w-7xl">
-        {/* HEADER */}
+
         <div className="flex flex-col gap-3 mb-8">
-          {/* Row 1: Title + Button */}
+
           <div className="flex items-center justify-between">
-            <div className="text-xl md:text-3xl font-bold text-accent">
+            <h2 className="text-xl md:text-3xl font-bold text-accent">
               Event Segera Hadir
-            </div>
+            </h2>
             <Button variant="link" asChild className="px-0 md:px-4">
               <Link
                 href="/events?sort=terbaru"
@@ -88,7 +88,13 @@ export default function UpcomingEvents() {
           </p>
         </div>
 
-        <UpcomingEventsGrid />
+        <Suspense fallback={
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+            <EventCardSkeletonList count={8} />
+          </div>
+        }>
+          <UpcomingEventsGrid />
+        </Suspense>
       </div>
     </section>
   );
