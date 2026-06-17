@@ -5,7 +5,6 @@ import InfiniteEventList from "@/components/explore/InfiniteEventList";
 import { INDONESIA_REGIONS } from "@/constants/regions";
 import { EventService } from "@/services/event-service";
 import type { HomeEventCard } from "@/types/event";
-import { Suspense } from "react";
 import GoToTopButton from "@/components/reusable/GoToTopButton";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;

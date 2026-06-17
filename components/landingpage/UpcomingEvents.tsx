@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Suspense } from "react";
 import { ArrowRight, CalendarX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import EventCard from "@/components/reusable/EventCard";
