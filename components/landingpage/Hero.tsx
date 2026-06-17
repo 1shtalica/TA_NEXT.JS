@@ -519,7 +519,7 @@ export default function HeroSection() {
                         </div>
 
                         {/* Headline — scaled down on mobile */}
-                        <h1 className="text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] lg:text-[3.8rem] font-extrabold text-slate-900 leading-[1.1] tracking-[-0.02em]">
+                        <div className="text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] lg:text-[3.8rem] font-extrabold text-slate-900 leading-[1.1] tracking-[-0.02em]">
                             Satu tempat
                             <br />
                             semua{" "}
@@ -530,7 +530,7 @@ export default function HeroSection() {
                             <span className="text-slate-300">
                                 di Indonesia.
                             </span>
-                        </h1>
+                        </div>
 
                         {/* Subtitle */}
                         <p className="text-sm sm:text-base lg:text-lg text-slate-500 leading-relaxed max-w-lg font-medium">

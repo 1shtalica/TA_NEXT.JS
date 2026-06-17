@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowRight, CalendarX } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import EventCard, { EventCardSkeletonList } from "@/components/reusable/EventCard";
+import EventCard from "@/components/reusable/EventCard";
 import { EventService } from "@/services/event-service";
 import EmptyState from "../reusable/EmptyState";
 
@@ -70,9 +70,9 @@ export default function UpcomingEvents() {
         <div className="flex flex-col gap-3 mb-8">
           {/* Row 1: Title + Button */}
           <div className="flex items-center justify-between">
-            <h2 className="text-xl md:text-3xl font-bold text-accent">
+            <div className="text-xl md:text-3xl font-bold text-accent">
               Event Segera Hadir
-            </h2>
+            </div>
             <Button variant="link" asChild className="px-0 md:px-4">
               <Link
                 href="/events?sort=terbaru"
@@ -88,13 +88,7 @@ export default function UpcomingEvents() {
           </p>
         </div>
 
-        <Suspense fallback={
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-            <EventCardSkeletonList count={8} />
-          </div>
-        }>
-          <UpcomingEventsGrid />
-        </Suspense>
+        <UpcomingEventsGrid />
       </div>
     </section>
   );

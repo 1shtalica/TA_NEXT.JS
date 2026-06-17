@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import { Event } from "@/types/event";
@@ -133,13 +132,9 @@ export default function ImageSection({ event }: { event: Event }) {
                                       xl:h-120
                                       max-h-120"
                       >
-                        <Image
+                        <img
                           src={src}
-                          alt={`${event.title} - Poster ${index + 1}`}
-                          fill
-                          className="object-cover hover:scale-105 transition-transform duration-700"
-                          priority={index === 0}
-                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                         />
                       </div>
 

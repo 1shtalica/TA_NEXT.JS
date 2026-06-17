@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { MapPin, Users, Heart, ImageOff, Ticket } from "lucide-react";
-
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -105,12 +103,9 @@ export default function EventCard({
                             </span>
                         </div>
                     ) : (
-                        <Image
+                        <img
                             src={image}
-                            alt={title}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             onError={() => setImgError(true)}
                         />
                     )}

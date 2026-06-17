@@ -41,14 +41,14 @@ export default function SearchBar() {
   return (
     <section className="w-full pt-28 md:pt-36 pb-4 relative z-10">
       <div className="w-full max-w-3xl mx-auto space-y-4 md:space-y-5 text-center">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+        <div className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
           Eksplorasi <span className="text-primary relative inline-block">
             Event Seru
             <svg className="absolute -bottom-1.5 left-0 w-full h-2 text-primary/20 -z-10" viewBox="0 0 100 20" preserveAspectRatio="none">
               <path d="M0 15 Q 50 0 100 15 L 100 20 L 0 20 Z" fill="currentColor" />
             </svg>
           </span>
-        </h1>
+        </div>
         <p className="text-slate-500 text-sm md:text-base max-w-xl mx-auto font-medium">
           Temukan dan ikuti berbagai acara menarik di sekitarmu, mulai dari konser, workshop, hingga seminar.
         </p>

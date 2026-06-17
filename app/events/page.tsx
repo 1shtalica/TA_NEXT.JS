@@ -89,14 +89,9 @@ export default async function ExplorePage(props: {
 
       <LandingNavbar />
       <main className="relative z-10 container mx-auto w-full max-w-7xl grow px-4 pb-20 md:px-8 lg:px-12">
-        <Suspense fallback={<div className="w-full h-32" />}>
           <SearchBar />
-        </Suspense>
-
         <div className="mb-8 relative z-20">
-          <Suspense fallback={<div className="w-full h-16" />}>
-            <FilterBar />
-          </Suspense>
+          <FilterBar />
         </div>
 
         {error && (

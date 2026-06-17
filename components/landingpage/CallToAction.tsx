@@ -58,9 +58,9 @@ export default function CallToAction() {
                 Mulai sebagai organizer
               </div>
               <div className="space-y-2">
-                <h2 className="text-2xl font-bold leading-tight text-slate-950 md:text-3xl">
+                <div className="text-2xl font-bold leading-tight text-slate-950 md:text-3xl">
                   Punya event yang ingin dipublikasikan?
-                </h2>
+                </div>
                 <p className="max-w-xl text-sm leading-relaxed text-slate-600 md:text-base">
                   Buat halaman event, atur tiket, dan kelola peserta dari satu tempat.
                 </p>

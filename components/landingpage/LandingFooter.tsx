@@ -13,9 +13,9 @@ export default function LandingFooter() {
           <div className="md:col-span-5 flex flex-col gap-6">
             <div className="space-y-3">
               <div className="inline-block">
-                <h2 className="font-bold text-2xl md:text-3xl tracking-tight text-white flex items-center gap-2">
+                <div className="font-bold text-2xl md:text-3xl tracking-tight text-white flex items-center gap-2">
                   <span>🎉</span> kumpul.in
-                </h2>
+                </div>
               </div>
               <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-sm">
                 Ciptakan eventmu dan jangkau ribuan peserta dengan mudah.

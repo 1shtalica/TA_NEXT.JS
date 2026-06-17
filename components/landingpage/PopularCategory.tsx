@@ -240,9 +240,9 @@ export default function PopularCategory() {
                             <Sparkles size={13} className="text-primary" />
                             {categories.length} kategori tersedia
                         </div>
-                        <h2 className="text-xl font-bold text-accent md:text-3xl">
+                        <div className="text-xl font-bold text-accent md:text-3xl">
                             Kategori Populer
-                        </h2>
+                        </div>
                         <p className="mt-1.5 text-sm text-muted md:text-base">
                             Pilih jalur tercepat ke event yang sesuai minatmu.
                         </p>
