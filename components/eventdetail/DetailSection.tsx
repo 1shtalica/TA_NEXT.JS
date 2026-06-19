@@ -211,7 +211,9 @@ export default function DetailSection({ event }: DetailSectionProps) {
                       className="hover:opacity-80 transition-opacity"
                     >
                       <Avatar className="h-12 w-12 ring-2 ring-white shadow-sm">
-                        <AvatarImage src={event.organizer.profile_image_url} />
+                        {event.organizer.profile_image_url && (
+                          <AvatarImage src={event.organizer.profile_image_url} />
+                        )}
                         <AvatarFallback>
                           {event.organizer.name.substring(0, 2).toUpperCase()}
                         </AvatarFallback>
