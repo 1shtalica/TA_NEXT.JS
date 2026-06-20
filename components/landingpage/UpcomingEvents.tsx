@@ -37,9 +37,7 @@ async function UpcomingEventsGrid() {
           organizer={event.organizer_name || ""}
           image={event.image_url || "/placeholder-event.jpg"}
           slug={event.slug}
-          isHot={false}
           isOnline={event.is_online}
-          isRtPintar={event.type === "internal"}
           ticketSold={event.total_sold || 0}
           maxQuota={event.max_capacity || 0}
         />
