@@ -255,9 +255,9 @@ export default function DetailSection({ event }: DetailSectionProps) {
           <div className="pt-2 md:pt-3">
             <div className="flex items-center gap-2 mb-4">
               <div className="h-7 w-1 bg-primary rounded-full"></div>
-              <h4 className="text-xl md:text-2xl font-bold text-slate-950 leading-tight">
+              <div className="text-xl md:text-2xl font-bold text-slate-950 leading-tight">
                 Tentang Event
-              </h4>
+              </div>
             </div>
             <TipTapViewer content={event.description?.content || ""} />
           </div>
@@ -266,9 +266,9 @@ export default function DetailSection({ event }: DetailSectionProps) {
             <div className="pt-2 md:pt-3">
               <div className="flex items-center gap-2 mb-4">
                 <div className="h-7 w-1 bg-primary rounded-full"></div>
-                <h4 className="text-xl md:text-2xl font-bold text-slate-950 leading-tight">
+                <div className="text-xl md:text-2xl font-bold text-slate-950 leading-tight">
                   Rundown Acara
-                </h4>
+                </div>
               </div>
 
               <div className="flex flex-col gap-4">
@@ -289,9 +289,9 @@ export default function DetailSection({ event }: DetailSectionProps) {
                     <div
                       className={`flex flex-col w-full ${item.location || item.description ? "gap-2" : "justify-center"}`}
                     >
-                      <h5 className="font-semibold text-slate-950 text-base md:text-lg leading-tight group-hover:text-primary transition-colors">
+                      <div className="font-semibold text-slate-950 text-base md:text-lg leading-tight group-hover:text-primary transition-colors">
                         {item.title}
-                      </h5>
+                      </div>
 
                       {item.location && (
                         <div className="flex items-center gap-2 text-sm text-slate-600">

@@ -65,9 +65,7 @@ export default function UpcomingEvents() {
         <div className="absolute bottom-8 left-8 h-[16rem] w-[16rem] rounded-full bg-[#6366f112]" />
       </div>
       <div className="relative z-10 container mx-auto px-4 md:px-8 lg:px-12 w-full max-w-7xl">
-        {/* HEADER */}
         <div className="flex flex-col gap-3 mb-8">
-          {/* Row 1: Title + Button */}
           <div className="flex items-center justify-between">
             <div className="text-xl md:text-3xl font-bold text-accent">
               Event Segera Hadir

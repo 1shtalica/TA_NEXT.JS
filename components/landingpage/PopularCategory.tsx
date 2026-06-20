@@ -338,14 +338,14 @@ export default function PopularCategory() {
                                 </div>
 
                                 <div>
-                                    <h3
+                                    <div
                                         className={cn(
                                             "text-base font-bold leading-tight text-accent md:text-lg",
                                             index === 0 && "md:text-xl",
                                         )}
                                     >
                                         {category.name}
-                                    </h3>
+                                    </div>
                                     <p
                                         className={cn(
                                             "mt-1 line-clamp-2 text-xs leading-relaxed text-muted",

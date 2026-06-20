@@ -72,7 +72,6 @@ export default function CallToAction() {
               size="lg"
               className="h-11 self-start rounded-xl px-5 text-sm font-semibold md:self-center"
             >
-              {/* ⚠️ TESTING APP: link menggunakan "#" agar tidak 404 */}
               <Link href="#">
                 Daftar Sekarang
                 <ArrowRight size={17} />

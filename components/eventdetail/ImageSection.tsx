@@ -59,7 +59,6 @@ export default function ImageSection({ event }: { event: Event }) {
 
   return (
     <div ref={sectionRef} className="relative w-full">
-      {/* Mesh Gradient Background */}
       {isVisible && (
         <div
           className="fixed top-0 left-0 w-screen pointer-events-none transition-opacity duration-300 ease-out"

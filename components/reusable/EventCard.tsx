@@ -18,9 +18,7 @@ interface EventCardProps {
     originalPrice?: number;
     organizer: string;
     image: string;
-    isHot?: boolean;
     isOnline?: boolean;
-    isRtPintar?: boolean;
     ticketSold?: number;
     maxQuota?: number;
     variant?: "vertical" | "horizontal";
@@ -53,9 +51,7 @@ export default function EventCard({
     organizer,
     image,
     slug,
-    isHot = false,
     isOnline = false,
-    isRtPintar = false,
     ticketSold = 0,
     maxQuota = 100,
     variant = "vertical",
@@ -68,7 +64,7 @@ export default function EventCard({
         ? dateObj.getDate()
         : date.split(" ")[0];
     const month = !isNaN(dateObj.getDate())
-        ? dateObj.toLocaleString("default", { month: "short" })
+        ? dateObj.toLocaleString("id-ID", { month: "short" })
         : date.split(" ")[1]?.substring(0, 3);
     const year = !isNaN(dateObj.getFullYear())
         ? dateObj.getFullYear()
@@ -86,7 +82,6 @@ export default function EventCard({
                     variant === "horizontal" ? "flex-row h-55" : "flex-col",
                 )}
             >
-                {/* === HEADER IMAGE === */}
                 <div
                     className={cn(
                         "relative overflow-hidden bg-slate-50 shrink-0",
@@ -130,12 +125,10 @@ export default function EventCard({
                     </button>
                 </div>
 
-                {/* === CONTENT === */}
                 <CardContent className="flex flex-col px-4 pb-4 pt-2 sm:pt-2 sm:pb-4 sm:px-5 h-full relative overflow-hidden">
                     <EventCardGraphic variant={variant} />
 
                     <div className="relative z-10 flex gap-4 items-start">
-                        {/* Date Box */}
                         <div className="flex flex-col items-center justify-center w-14 py-2 min-h-17 bg-indigo-50/80 text-indigo-600 rounded-xl shrink-0 border border-indigo-100/50">
                             <span className="text-xl font-bold leading-none tracking-tight">
                                 {day}
@@ -148,18 +141,17 @@ export default function EventCard({
                             </span>
                         </div>
 
-                        {/* Details */}
                         <div className="flex flex-col gap-1 w-full">
                             <span className="text-xs font-semibold text-indigo-500 tracking-wide line-clamp-1">
                                 {category}
                             </span>
 
-                            <h3
+                            <div
                                 className="font-bold text-base leading-snug text-slate-900 line-clamp-2"
                                 title={title}
                             >
                                 {title}
-                            </h3>
+                            </div>
 
                             <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-0.5">
                                 <MapPin size={12} className="shrink-0" />
@@ -174,9 +166,7 @@ export default function EventCard({
                         </div>
                     </div>
 
-                    {/* Price & Quota (Footer Area) */}
                     <div className="relative z-10 mt-auto pt-5 flex items-end justify-between">
-                        {/* Price */}
                         <div className="flex flex-col">
                             {!!originalPrice &&
                                 Number(originalPrice) > 0 &&
@@ -190,7 +180,6 @@ export default function EventCard({
                             </span>
                         </div>
 
-                        {/* Quota */}
                         <div className="flex items-center gap-1.5 text-slate-400 text-xs font-medium">
                             <Users size={14} />
                             <span>

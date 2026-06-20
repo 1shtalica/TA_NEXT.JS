@@ -52,9 +52,7 @@ export default function LandingNavbar() {
       )}
     >
       <div className="container relative mx-auto px-4 md:px-8 lg:px-12 flex flex-row items-center justify-between w-full max-w-7xl">
-        {/* LEFT: Burger (mobile) + Logo (desktop-only) */}
         <div className="flex items-center gap-2">
-          {/* Burger — Mobile Only, slides dari kiri */}
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -128,7 +126,6 @@ export default function LandingNavbar() {
             </Sheet>
           </div>
 
-          {/* Logo — Desktop only (hidden on mobile) */}
           <button
             type="button"
             onClick={() => router.refresh()}
@@ -143,7 +140,6 @@ export default function LandingNavbar() {
           </button>
         </div>
 
-        {/* CENTER: Desktop Nav */}
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-2">
           <Button
             asChild

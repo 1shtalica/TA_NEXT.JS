@@ -51,7 +51,6 @@ const TICKET_COLORS = [
     },
 ];
 
-// --- 1. KOMPONEN QUOTA BAR ---
 function QuotaBar({
     booked,
     total,
@@ -349,9 +348,9 @@ export default function TicketSection({ event }: { event: Event }) {
                         <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">
                             Registrasi
                         </p>
-                        <h3 className="text-xl md:text-2xl font-bold text-slate-950 leading-tight">
+                        <div className="text-xl md:text-2xl font-bold text-slate-950 leading-tight">
                             Pilih Tiket
-                        </h3>
+                        </div>
                     </div>
 
                     {isRegistrationUpcoming && currentTime && (
@@ -463,9 +462,8 @@ export default function TicketSection({ event }: { event: Event }) {
                                                 <TicketCountdownBadge diff={ticketEnd - now} type="ends" />
                                             )}
 
-                                        {/* Header */}
                                         <div className="flex justify-between items-start mb-1">
-                                            <h4
+                                            <div
                                                 className={cn(
                                                     "font-semibold text-sm leading-snug line-clamp-2",
                                                     isSelected
@@ -474,7 +472,7 @@ export default function TicketSection({ event }: { event: Event }) {
                                                 )}
                                             >
                                                 {ticket.name}
-                                            </h4>
+                                            </div>
                                             {isActuallySoldOut && (
                                                 <span className="bg-danger text-white text-[10px] px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">
                                                     Habis
@@ -482,19 +480,16 @@ export default function TicketSection({ event }: { event: Event }) {
                                             )}
                                         </div>
 
-                                        {/* Harga */}
                                         <p className="font-bold text-base md:text-lg text-primary mb-1 leading-tight">
                                             {formatRupiah(ticket.price)}
                                         </p>
 
-                                        {/* Deskripsi */}
                                         {ticket.description && (
                                             <p className="text-xs text-slate-600 mb-3 line-clamp-2 leading-relaxed">
                                                 {ticket.description}
                                             </p>
                                         )}
 
-                                        {/* Progress Bar */}
                                         {ticket.quota > 0 ? (
                                             <QuotaBar
                                                 booked={ticket.booked}
@@ -522,9 +517,7 @@ export default function TicketSection({ event }: { event: Event }) {
                     </div>
                 </div>
 
-                {/* ── ZONA BAWAH: SELALU TERLIHAT ── */}
                 <div className="shrink-0 p-5 pt-3 flex flex-col gap-3 border-t border-slate-100 bg-white">
-                    {/* Counter qty */}
                     {selectedTicket && (
                         <>
                             <div className="p-3 bg-primary-light rounded-xl flex items-center justify-between border border-primary/10">
@@ -569,7 +562,6 @@ export default function TicketSection({ event }: { event: Event }) {
                         </>
                     )}
                     
-                    {/* Total harga */}
                     <div className="flex justify-between items-end">
                         <span className="text-slate-500 text-sm font-semibold">
                             Total
@@ -579,7 +571,6 @@ export default function TicketSection({ event }: { event: Event }) {
                         </span>
                     </div>
 
-                    {/* Tombol aksi berdasarkan role */}
                         <Button
                             asChild
                             size="lg"
@@ -590,7 +581,6 @@ export default function TicketSection({ event }: { event: Event }) {
                         
                     <Separator />
 
-                    {/* Share */}
                     <div className="flex items-center justify-between text-slate-500">
                         <span className="text-sm font-medium">
                             Bagikan event ini

@@ -24,9 +24,9 @@ export default function EventList({ events }: EventListProps) {
         <div className="bg-primary/5 p-5 rounded-3xl mb-4 border border-primary/10">
           <Inbox className="w-10 h-10 text-primary" strokeWidth={1.5} />
         </div>
-        <h3 className="text-xl md:text-2xl font-bold text-foreground">
+        <div className="text-xl md:text-2xl font-bold text-foreground">
           Tidak ada event ditemukan
-        </h3>
+        </div>
         <p className="text-muted-foreground max-w-sm mt-3 text-sm md:text-base leading-relaxed">
           Coba ganti kata kunci pencarian atau atur ulang filter kamu untuk
           menemukan hasil lainnya.

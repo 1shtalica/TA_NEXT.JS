@@ -27,7 +27,6 @@ export default function HeaderSection() {
       )}
     >
       <div className="container mx-auto px-4 md:px-8 lg:px-12 w-full max-w-7xl flex flex-row items-center justify-between">
-        {/* === BAGIAN KIRI: LOGO === */}
         <div className="flex items-center gap-4">
           <button
             type="button"
