@@ -6,17 +6,7 @@ interface EventListProps {
   events: HomeEventCard[];
 }
 
-function formatEventDate(isoDate: string): string {
-  if (!isoDate) return "TBA";
-  const date = new Date(isoDate);
-  const options: Intl.DateTimeFormatOptions = {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    timeZone: "UTC",
-  };
-  return date.toLocaleDateString("id-ID", options);
-}
+
 
 export default function EventList({ events }: EventListProps) {
   if (!events || events.length === 0) {
@@ -43,7 +33,7 @@ export default function EventList({ events }: EventListProps) {
           key={event.id ?? event.event_id ?? event.slug}
           title={event.title}
           category={event.type}
-          date={formatEventDate(event.start_date)}
+          date={event.start_date || "TBA"}
           location={event.is_online ? "Online" : event.address_title}
           price={event.ticket_price}
           organizer={event.organizer_name}
