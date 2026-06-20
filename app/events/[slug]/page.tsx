@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 async function ServerEventDetail({ slug }: { slug: string }) {
   const event = await EventService.getEventBySlug(slug).catch(() => null);
-
   if (!event) {
     return notFound();
   }
