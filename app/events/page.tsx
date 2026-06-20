@@ -7,6 +7,7 @@ import { EventService } from "@/services/event-service";
 import type { HomeEventCard } from "@/types/event";
 import { Suspense } from "react";
 import GoToTopButton from "@/components/reusable/GoToTopButton";
+import { EventCardSkeletonList } from "@/components/reusable/EventCard";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
@@ -49,6 +50,23 @@ export default async function ExplorePage(props: {
 
   const LIMIT = 12;
 
+async function ServerEventList({
+  query,
+  typeFilter,
+  categoryFilter,
+  provinceFilter,
+  priceFilter,
+  sortOption,
+  limit,
+}: {
+  query: string;
+  typeFilter: string;
+  categoryFilter: string;
+  provinceFilter: string;
+  priceFilter: string;
+  sortOption: string;
+  limit: number;
+}) {
   let initialEvents: HomeEventCard[] = [];
   let initialHasMore = false;
   let initialNextCursor: string | null = null;
@@ -56,7 +74,7 @@ export default async function ExplorePage(props: {
 
   try {
     const response = await EventService.getEvents({
-      limit: LIMIT,
+      limit,
       type: typeFilter,
       q: query,
       category: categoryFilter,
@@ -71,6 +89,38 @@ export default async function ExplorePage(props: {
     console.error("Failed to fetch events:", err);
     error = "Gagal memuat event. Silakan coba lagi nanti.";
   }
+
+  if (error) {
+    return (
+      <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+        <p className="text-danger text-sm">{error}</p>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {query && (
+        <div className="mb-6 text-muted text-sm md:text-base">
+          Hasil pencarian untuk <strong>&quot;{query}&quot;</strong>
+        </div>
+      )}
+
+      <InfiniteEventList
+        initialEvents={initialEvents}
+        initialHasMore={initialHasMore}
+        initialNextCursor={initialNextCursor}
+        searchQuery={query}
+        typeFilter={typeFilter}
+        categoryFilter={categoryFilter}
+        provinceFilter={provinceFilter}
+        priceFilter={priceFilter}
+        sortOption={sortOption}
+        limit={limit}
+      />
+    </>
+  );
+}
 
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden bg-[#f9fafb]">
@@ -101,30 +151,17 @@ export default async function ExplorePage(props: {
           </Suspense>
         </div>
 
-        {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-danger text-sm">{error}</p>
-          </div>
-        )}
-
-        {query && (
-          <div className="mb-6 text-muted text-sm md:text-base">
-            Hasil pencarian untuk <strong>&quot;{query}&quot;</strong>
-          </div>
-        )}
-
-        <InfiniteEventList
-          initialEvents={initialEvents}
-          initialHasMore={initialHasMore}
-          initialNextCursor={initialNextCursor}
-          searchQuery={query}
-          typeFilter={typeFilter}
-          categoryFilter={categoryFilter}
-          provinceFilter={provinceFilter}
-          priceFilter={priceFilter}
-          sortOption={sortOption}
-          limit={LIMIT}
-        />
+        <Suspense fallback={<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><EventCardSkeletonList count={12} /></div>}>
+          <ServerEventList
+            query={query}
+            typeFilter={typeFilter}
+            categoryFilter={categoryFilter}
+            provinceFilter={provinceFilter}
+            priceFilter={priceFilter}
+            sortOption={sortOption}
+            limit={LIMIT}
+          />
+        </Suspense>
       </main>
       <GoToTopButton />
     </div>

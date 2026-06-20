@@ -19,9 +19,7 @@ interface EventCardProps {
     originalPrice?: number;
     organizer: string;
     image: string;
-    isHot?: boolean;
     isOnline?: boolean;
-    isRtPintar?: boolean;
     ticketSold?: number;
     maxQuota?: number;
     variant?: "vertical" | "horizontal";
@@ -54,9 +52,7 @@ export default function EventCard({
     organizer,
     image,
     slug,
-    isHot = false,
     isOnline = false,
-    isRtPintar = false,
     ticketSold = 0,
     maxQuota = 100,
     variant = "vertical",
@@ -65,15 +61,16 @@ export default function EventCard({
 
 
     const dateObj = new Date(date);
-    const day = !isNaN(dateObj.getDate())
-        ? dateObj.getDate()
-        : date.split(" ")[0];
-    const month = !isNaN(dateObj.getDate())
-        ? dateObj.toLocaleString("default", { month: "short" })
-        : date.split(" ")[1]?.substring(0, 3);
-    const year = !isNaN(dateObj.getFullYear())
-        ? dateObj.getFullYear()
-        : date.split(" ")[2] || new Date().getFullYear();
+    const isValidDate = !isNaN(dateObj.getTime());
+    const day = isValidDate
+        ? dateObj.getUTCDate()
+        : date.split(" ")[0] || "TBA";
+    const month = isValidDate
+        ? dateObj.toLocaleString("id-ID", { month: "short", timeZone: "UTC" })
+        : date.split(" ")[1]?.substring(0, 3) || "";
+    const year = isValidDate
+        ? dateObj.getUTCFullYear()
+        : date.split(" ")[2] || new Date().getUTCFullYear();
 
     return (
         <Link
@@ -108,6 +105,7 @@ export default function EventCard({
                             src={image}
                             alt={`Banner ${title}`}
                             fill
+                            quality={100}
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             onError={() => setImgError(true)}
