@@ -133,6 +133,7 @@ export default function ImageSection({ event }: { event: Event }) {
                       >
                         <img
                           src={src}
+                          alt={`${event.title} - Poster ${index + 1}`}
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                         />
                       </div>

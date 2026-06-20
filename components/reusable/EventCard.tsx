@@ -101,6 +101,7 @@ export default function EventCard({
                     ) : (
                         <img
                             src={image}
+                            alt={`Banner ${title}`}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             onError={() => setImgError(true)}
                         />
