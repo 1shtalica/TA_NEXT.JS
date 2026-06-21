@@ -12,6 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: "404 - Kumpulin",
     description: "Event tidak ditemukan",
   };
+
   return {
     title: `${event.title} - Kumpulin`,
     description: `Ikuti acara ${event.title} sekarang juga di Kumpulin.`,
