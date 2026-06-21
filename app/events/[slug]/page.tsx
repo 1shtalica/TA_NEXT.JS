@@ -11,6 +11,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!event) return {
     title: "404 - Kumpulin",
     description: "Event tidak ditemukan",
+    openGraph: {
+      title: "404 - Kumpulin",
+      description: "",
+      type: "website",
+    }
   };
 
   return {
