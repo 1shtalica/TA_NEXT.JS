@@ -9,6 +9,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL ?? "https://kumpulin.vercel.app"
+  ),
   title: "Kumpul.in",
   description: "Kumpulin event management system",
   alternates: {
