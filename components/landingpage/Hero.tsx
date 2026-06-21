@@ -27,7 +27,6 @@ import { Input } from "@/components/ui/input";
 
 const CYCLING_WORDS = ["Konser", "Workshop", "Festival", "Seminar", "Pameran"];
 
-
 const CARD_ACCENTS = ["#6366f1", "#10b981", "#f59e0b"];
 
 function formatEventDate(dateStr: string): string {
