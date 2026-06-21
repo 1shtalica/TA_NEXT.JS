@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
   return {
     title: `${event.title} - Kumpulin`,
-    description: `Ikuti acara ${event.title} oleh ${event.organizer?.name || 'Kumpulin'}.`,
+    description: `Ikuti acara ${event.title} sekarang juga di Kumpulin.`,
     alternates: {
       canonical: `/events/${slug}`,
     },
