@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: event.title,
       description: `Dapatkan Tiket ${event.title} sekarang juga di 🎊Kumpulin!`,
-      images: [event.images?.find(i => i.is_primary)?.image_url || ""],
+      images: [event.images?.find(i => i.is_primary)?.image_url || event.images?.[0]?.image_url || ""].filter(url => url !== ""),
       type: "website",
     }
   };
