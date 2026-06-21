@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     dangerouslyAllowSVG: true,
+    qualities: [75, 100],
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
       { protocol: "https", hostname: "storage.eliflab.site", pathname: "/**" },

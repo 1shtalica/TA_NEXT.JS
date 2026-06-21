@@ -11,6 +11,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Kumpul.in",
   description: "Kumpulin event management system",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

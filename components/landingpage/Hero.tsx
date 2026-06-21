@@ -204,8 +204,37 @@ function EventCardStack({ events }: { events: HomeEventCard[] }) {
 
     if (count === 0) {
         return (
-            <div className="relative h-85 w-full max-w-85 mx-auto flex items-center justify-center">
-                <div className="text-slate-300 text-sm">Memuat event...</div>
+            <div className="relative h-85 w-full max-w-85 mx-auto">
+                {[0, 1, 2].map((i) => (
+                    <div
+                        key={i}
+                        className="absolute inset-x-0 top-0 overflow-hidden bg-white rounded-2xl border border-slate-100 shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-5"
+                        style={{
+                            transform: `translateY(${i * 18}px) scale(${1 - i * 0.05})`,
+                            opacity: i === 0 ? 1 : i === 1 ? 0.75 : 0.45,
+                            zIndex: 30 - i * 10,
+                        }}
+                    >
+                        <div className="h-1.5 w-16 rounded-full bg-slate-200 animate-pulse mb-4" />
+                        <div className="flex items-center justify-between mb-3">
+                            <div className="h-3 w-16 bg-slate-200 rounded-full animate-pulse" />
+                            <div className="h-5 w-16 bg-slate-100 rounded-full animate-pulse" />
+                        </div>
+                        <div className="space-y-2 mb-4">
+                            <div className="h-4 w-full bg-slate-200 rounded-full animate-pulse" />
+                            <div className="h-4 w-3/4 bg-slate-200 rounded-full animate-pulse" />
+                        </div>
+                        <div className="space-y-2 mb-5">
+                            <div className="h-3 w-2/3 bg-slate-100 rounded-full animate-pulse" />
+                            <div className="h-3 w-1/2 bg-slate-100 rounded-full animate-pulse" />
+                        </div>
+                        <div className="h-1.5 w-full bg-slate-100 rounded-full animate-pulse mb-3" />
+                        <div className="flex justify-between pt-2 border-t border-slate-50">
+                            <div className="h-3 w-16 bg-slate-100 rounded-full animate-pulse" />
+                            <div className="h-3 w-20 bg-slate-100 rounded-full animate-pulse" />
+                        </div>
+                    </div>
+                ))}
             </div>
         );
     }
