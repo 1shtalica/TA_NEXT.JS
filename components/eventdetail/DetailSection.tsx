@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
+import dynamic from "next/dynamic";
 import {
   Calendar,
   Clock,
@@ -15,16 +18,29 @@ import { Button } from "../ui/button";
 import { Event } from "@/types/event";
 import { format, isSameDay } from "date-fns";
 import { id } from "date-fns/locale";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "../ui/badge";
-import TipTapViewer from "@/components/reusable/TipTapViewer";
 import Link from "next/link";
+
+const TipTapViewer = dynamic(
+  () => import("@/components/reusable/TipTapViewer"),
+  {
+    ssr: false,
+    loading: () => (
+      <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+        Memuat deskripsi...
+      </p>
+    ),
+  },
+);
 
 interface DetailSectionProps {
   event: Event;
 }
 
 export default function DetailSection({ event }: DetailSectionProps) {
+  const [avatarError, setAvatarError] = useState(false);
+
   const startDate = event.event_start_date
     ? new Date(event.event_start_date)
     : null;
@@ -211,12 +227,21 @@ export default function DetailSection({ event }: DetailSectionProps) {
                       className="hover:opacity-80 transition-opacity"
                     >
                       <Avatar className="h-12 w-12 ring-2 ring-white shadow-sm">
-                        {event.organizer.profile_image_url && (
-                          <AvatarImage src={event.organizer.profile_image_url} />
+                        {event.organizer.profile_image_url && !avatarError ? (
+                          <Image
+                            src={event.organizer.profile_image_url}
+                            alt={event.organizer.name}
+                            fill
+                            quality={75}
+                            sizes="48px"
+                            className="object-cover"
+                            onError={() => setAvatarError(true)}
+                          />
+                        ) : (
+                          <AvatarFallback>
+                            {event.organizer.name.substring(0, 2).toUpperCase()}
+                          </AvatarFallback>
                         )}
-                        <AvatarFallback>
-                          {event.organizer.name.substring(0, 2).toUpperCase()}
-                        </AvatarFallback>
                       </Avatar>
                     </Link>
                   </div>

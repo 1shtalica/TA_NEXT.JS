@@ -136,9 +136,10 @@ export default function ImageSection({ event }: { event: Event }) {
                           src={src}
                           alt={`${event.title} - Poster ${index + 1}`}
                           fill
-                          quality={100}
+                          quality={75}
                           className="object-cover hover:scale-105 transition-transform duration-700"
                           priority={index === 0}
+                          fetchPriority={index === 0 ? "high" : undefined}
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
                         />
                       </div>

@@ -26,7 +26,7 @@ async function UpcomingEventsGrid() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-      {events.map((event) => (
+      {events.map((event, index) => (
         <EventCard
           key={event.id}
           title={event.title}
@@ -41,6 +41,7 @@ async function UpcomingEventsGrid() {
           isOnline={event.is_online}
           ticketSold={event.total_sold || 0}
           maxQuota={event.max_capacity || 0}
+          priority={index === 0}
         />
       ))}
     </div>
@@ -73,7 +74,7 @@ export default function UpcomingEvents() {
             </h2>
             <Button variant="link" asChild className="px-0 md:px-4">
               <Link
-                href="/events?sort=terbaru"
+                href="/events?sort=newest"
                 className="flex items-center gap-1"
               >
                 Lihat Semua <ArrowRight size={18} />

@@ -110,7 +110,7 @@ function CyclingWord() {
 
     return (
         <span
-            className="relative inline-block"
+            className="relative inline-block min-w-[150px] sm:min-w-[200px] md:min-w-[260px] lg:min-w-[290px] text-left"
             style={{
                 transition: "opacity 0.35s ease, transform 0.35s ease",
                 opacity: visible ? 1 : 0,
@@ -380,67 +380,83 @@ function MobileEventStrip({ events }: { events: HomeEventCard[] }) {
                 </Link>
             </div>
 
-            <div className="relative">
+            <div className="relative min-h-[14rem]">
                 <div className="flex gap-3 overflow-x-auto scrollbar-hide px-4 sm:px-6 pb-2">
-                    {events.map((ev, i) => {
-                        const accent = CARD_ACCENTS[i % CARD_ACCENTS.length];
-                        const tag = getEventTag(ev);
-                        const fillRatio =
-                            ev.max_capacity > 0
-                                ? ev.total_sold / ev.max_capacity
-                                : 0;
-                        return (
-                            <Link
-                                key={ev.event_id ?? ev.slug ?? i}
-                                href={`/events/${ev.slug}`}
-                                className="group relative shrink-0 w-60 overflow-hidden bg-white rounded-xl border border-slate-100 shadow-sm p-4 block hover:shadow-md transition-shadow"
-                            >
-                                <HeroEventCardGraphic accent={accent} compact />
-                                <div className="relative flex items-center justify-between mb-2">
-                                    <span
-                                        className="text-[10px] font-bold uppercase tracking-widest"
-                                        style={{ color: accent }}
-                                    >
-                                        {ev.type}
-                                    </span>
-                                    <span
-                                        className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${tag.className}`}
-                                    >
-                                        {tag.text}
-                                    </span>
+                    {events.length === 0 ? (
+                        <div className="flex gap-3">
+                            {[1, 2, 3].map((i) => (
+                                <div
+                                    key={`skel-${i}`}
+                                    className="shrink-0 w-60 h-[13rem] bg-white rounded-xl border border-slate-100 shadow-sm p-4 animate-pulse flex flex-col"
+                                >
+                                    <div className="h-3 w-16 bg-slate-200 rounded-full mb-3" />
+                                    <div className="h-5 w-3/4 bg-slate-200 rounded-full mb-4" />
+                                    <div className="h-3 w-full bg-slate-100 rounded-full mb-2" />
+                                    <div className="h-3 w-2/3 bg-slate-100 rounded-full mt-auto" />
                                 </div>
-                                <p className="relative text-sm font-extrabold text-slate-900 leading-tight mb-2 line-clamp-2">
-                                    {ev.title}
-                                </p>
-                                <div className="relative flex items-center gap-3 text-xs text-slate-400 mb-3">
-                                    <span className="flex items-center gap-1">
-                                        <MapPin size={11} />
-                                        <span className="truncate max-w-20">
-                                            {ev.is_online
-                                                ? "Online"
-                                                : ev.address_title}
+                            ))}
+                        </div>
+                    ) : (
+                        events.map((ev, i) => {
+                            const accent = CARD_ACCENTS[i % CARD_ACCENTS.length];
+                            const tag = getEventTag(ev);
+                            const fillRatio =
+                                ev.max_capacity > 0
+                                    ? ev.total_sold / ev.max_capacity
+                                    : 0;
+                            return (
+                                <Link
+                                    key={ev.event_id ?? ev.slug ?? i}
+                                    href={`/events/${ev.slug}`}
+                                    className="group relative shrink-0 w-60 overflow-hidden bg-white rounded-xl border border-slate-100 shadow-sm p-4 block hover:shadow-md transition-shadow"
+                                >
+                                    <HeroEventCardGraphic accent={accent} compact />
+                                    <div className="relative flex items-center justify-between mb-2">
+                                        <span
+                                            className="text-[10px] font-bold uppercase tracking-widest"
+                                            style={{ color: accent }}
+                                        >
+                                            {ev.type}
                                         </span>
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                        <CalendarDays size={11} />
-                                        {formatEventDate(ev.start_date)}
-                                    </span>
-                                </div>
-                                <div className="relative h-1 bg-slate-100 rounded-full overflow-hidden">
-                                    <div
-                                        className="h-full rounded-full"
-                                        style={{
-                                            width: `${fillRatio * 100}%`,
-                                            background: accent,
-                                        }}
-                                    />
-                                </div>
-                                <p className="relative text-[10px] text-slate-400 mt-1">
-                                    {Math.round(fillRatio * 100)}% terisi
-                                </p>
-                            </Link>
-                        );
-                    })}
+                                        <span
+                                            className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${tag.className}`}
+                                        >
+                                            {tag.text}
+                                        </span>
+                                    </div>
+                                    <p className="relative text-sm font-extrabold text-slate-900 leading-tight mb-2 line-clamp-2">
+                                        {ev.title}
+                                    </p>
+                                    <div className="relative flex items-center gap-3 text-xs text-slate-400 mb-3">
+                                        <span className="flex items-center gap-1">
+                                            <MapPin size={11} />
+                                            <span className="truncate max-w-20">
+                                                {ev.is_online
+                                                    ? "Online"
+                                                    : ev.address_title}
+                                            </span>
+                                        </span>
+                                        <span className="flex items-center gap-1">
+                                            <CalendarDays size={11} />
+                                            {formatEventDate(ev.start_date)}
+                                        </span>
+                                    </div>
+                                    <div className="relative h-1 bg-slate-100 rounded-full overflow-hidden">
+                                        <div
+                                            className="h-full rounded-full"
+                                            style={{
+                                                width: `${fillRatio * 100}%`,
+                                                background: accent,
+                                            }}
+                                        />
+                                    </div>
+                                    <p className="relative text-[10px] text-slate-400 mt-1">
+                                        {Math.round(fillRatio * 100)}% terisi
+                                    </p>
+                                </Link>
+                            );
+                        })
+                    )}
                 </div>
 
                 <div className="absolute right-0 top-0 h-full w-12 bg-linear-to-l from-[#f9fafb] to-transparent pointer-events-none" />
@@ -450,26 +466,15 @@ function MobileEventStrip({ events }: { events: HomeEventCard[] }) {
 }
 
 
-export default function HeroSection() {
+export default function HeroSection({
+    initialHeroEvents,
+}: {
+    initialHeroEvents: HomeEventCard[];
+}) {
     const router = useRouter();
     const [searchValue, setSearchValue] = useState("");
     const inputRef = useRef<HTMLInputElement>(null);
-    const [heroEvents, setHeroEvents] = useState<HomeEventCard[]>([]);
-
-
-    useEffect(() => {
-        const fetchHeroEvents = async () => {
-            try {
-                const res = await fetch(`/api/proxy/events?limit=3`);
-                if (!res.ok) return;
-                const json = await res.json();
-                setHeroEvents(json.data ?? []);
-            } catch {
-
-            }
-        };
-        fetchHeroEvents();
-    }, []);
+    const heroEvents = initialHeroEvents;
 
     const debouncedSearch = useDebouncedCallback((term: string) => {
         if (term.trim())

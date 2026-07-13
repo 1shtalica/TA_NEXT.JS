@@ -27,7 +27,7 @@ export default function EventList({ events }: EventListProps) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-      {events.map((event) => (
+      {events.map((event, index) => (
         <EventCard
           key={event.id ?? event.event_id ?? event.slug}
           title={event.title}
@@ -41,6 +41,7 @@ export default function EventList({ events }: EventListProps) {
           isOnline={event.is_online}
           ticketSold={event.total_sold}
           maxQuota={event.max_capacity}
+          priority={index === 0}
         />
       ))}
     </div>

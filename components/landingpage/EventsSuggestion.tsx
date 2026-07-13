@@ -45,6 +45,7 @@ async function EventsSuggestionGrid() {
             isOnline={event.is_online}
             ticketSold={event.total_sold}
             maxQuota={event.max_capacity}
+            priority={index === 0}
           />
         </div>
       ))}
@@ -75,7 +76,7 @@ export default function EventsSuggestion() {
               Event Pilihan
             </h2>
             <Button variant="link" asChild>
-              <Link href="/events?sort=Populer">
+              <Link href="/events">
                 Lihat Semua <ArrowRight size={18} />
               </Link>
             </Button>

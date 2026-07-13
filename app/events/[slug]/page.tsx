@@ -15,8 +15,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: "404 - Kumpulin",
       description: "",
       type: "website",
-    }
+    },
   };
+
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "";
+  const eventImage =
+    event.images?.find((i) => i.is_primary)?.image_url ||
+    event.images?.[0]?.image_url ||
+    `${siteUrl}/og_image.png`;
 
   return {
     title: `${event.title} - Kumpulin`,
@@ -27,9 +33,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: event.title,
       description: `Dapatkan Tiket ${event.title} sekarang juga di 🎊Kumpulin!`,
-      images: [event.images?.find(i => i.is_primary)?.image_url || event.images?.[0]?.image_url || ""].filter(url => url !== ""),
+      url: `/events/${slug}`,
       type: "website",
-    }
+      images: [
+        {
+          url: eventImage,
+          width: 1200,
+          height: 630,
+          alt: `${event.title} - Kumpulin`,
+          type: "image/png",
+        },
+      ],
+    },
   };
 }
 

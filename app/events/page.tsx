@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import LandingNavbar from "@/components/landingpage/LandingNavbar";
 import SearchBar from "@/components/explore/SearchBar";
 import FilterBar from "@/components/explore/FilterBar";
@@ -11,11 +12,26 @@ import { EventCardSkeletonList } from "@/components/reusable/EventCard";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Cari Event - Kumpulin",
   description: "Temukan berbagai acara seru di sekitarmu.",
   alternates: {
     canonical: "/events",
+  },
+  openGraph: {
+    title: "Cari Event - Kumpulin",
+    description: "Temukan berbagai acara seru di sekitarmu.",
+    url: "/events",
+    type: "website",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/og_image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Banner Resmi Kumpul.in",
+        type: "image/png",
+      }
+    ],
   },
 };
 
@@ -122,8 +138,23 @@ async function ServerEventList({
   );
 }
 
+  const siteUrl =
+    process.env.NEXT_PUBLIC_APP_URL;
+
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden bg-[#f9fafb]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Cari Event - Kumpulin",
+            description: "Temukan berbagai acara seru di sekitarmu.",
+            url: `${siteUrl}/events`,
+          }),
+        }}
+      />
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
         <div
           className="absolute inset-0"

@@ -23,6 +23,7 @@ interface EventCardProps {
     ticketSold?: number;
     maxQuota?: number;
     variant?: "vertical" | "horizontal";
+    priority?: boolean;
 }
 
 function EventCardGraphic({ variant }: { variant: EventCardProps["variant"] }) {
@@ -56,6 +57,7 @@ export default function EventCard({
     ticketSold = 0,
     maxQuota = 100,
     variant = "vertical",
+    priority = false,
 }: EventCardProps) {
     const [imgError, setImgError] = useState(false);
 
@@ -105,7 +107,9 @@ export default function EventCard({
                             src={image}
                             alt={`Banner ${title}`}
                             fill
-                            quality={100}
+                            quality={75}
+                            priority={priority}
+                            fetchPriority={priority ? "high" : undefined}
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             onError={() => setImgError(true)}
@@ -123,7 +127,7 @@ export default function EventCard({
                                 className="bg-white/90 backdrop-blur-sm text-slate-700 rounded-full px-3 py-1 shadow-sm text-xs font-semibold"
                             >
                                 Offline
-                            </Badge>
+                            </Badge> 
                         )}
                     </div>
 
