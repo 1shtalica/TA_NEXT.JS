@@ -49,7 +49,6 @@
   --shadow-2xs: 0 1px 10px 1px hsl(0 0% 0% / 0.09);
   --shadow-xs: 0 1px 10px 1px hsl(0 0% 0% / 0.09);
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  /* customed shadow */
   --shadow: 0 4px 12px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 8px 16px -2px rgb(0 0 0 / 0.06);
   --shadow-lg: 0 12px 24px -4px rgb(0 0 0 / 0.08);
@@ -177,21 +176,17 @@
 }
 
 @theme {
-  /* Primary Colors */
   --color-primary: oklch(47.06% 0.175 273.83);
   --color-primary-hover: oklch(41.43% 0.165 274.65);
   --color-primary-light: oklch(95.63% 0.016 273.83);
 
-  /* Secondary Colors */
   --color-secondary: oklch(67.56% 0.165 156.4);
   --color-secondary-hover: oklch(57.7% 0.151 157.4);
   --color-secondary-light: oklch(93.94% 0.052 155.8);
 
-  /* Text Colors */
   --color-accent: oklch(27.6% 0.024 256);
   --color-muted: oklch(55.5% 0.03 256);
 
-  /* Status Colors */
   --color-success: oklch(54.2% 0.197 146.4);
   --color-success-hover: oklch(48.7% 0.184 147.4);
   --color-success-light: oklch(92.7% 0.078 146.4);
@@ -210,7 +205,6 @@
 
   --color-custom-gray: var(--gray);
 
-  /* Font Weight */
   --font-weight-normal: 300;
   --font-weight-medium: 400;
   --font-weight-semibold: 500;
@@ -250,7 +244,6 @@ body {
   }
 }
 
-/* TipTap / ProseMirror Editor Styles */
 .tiptap strong,
 .tiptap b {
   font-weight: 700;

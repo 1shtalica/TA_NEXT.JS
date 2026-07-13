@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_URL}/og_image.png`, // Absolute URL
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/og_image.png`,
         width: 1200,
         height: 630,
         alt: "Banner Resmi Kumpul.in",
