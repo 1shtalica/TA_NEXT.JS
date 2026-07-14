@@ -2,8 +2,10 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import EventDetailHeader from "@/components/eventdetail/EventDetailHeader";
 import EventDetailContent from "@/components/eventdetail/EventDetailContent";
+import EventDetailSkeleton from "@/components/eventdetail/EventDetailSkeleton";
 import { EventService } from "@/services/event-service";
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -14,11 +16,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: "404 - Kumpulin",
       description: "",
+      url: "/",
       type: "website",
+      images: [
+        {
+          url: "/og_image.png",
+          width: 1200,
+          height: 630,
+          alt: "Banner Resmi Kumpul.in",
+          type: "image/png",
+        },
+      ],
     },
   };
 
-  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "";
+  const siteUrl = SITE_URL;
   const eventImage =
     event.images?.find((i) => i.is_primary)?.image_url ||
     event.images?.[0]?.image_url ||
@@ -87,11 +99,7 @@ export default async function EventDetail({ params }: { params: Promise<{ slug: 
     <>
       <EventDetailHeader />
       <main className="min-h-screen bg-[#f9fafb]">
-        <Suspense fallback={
-          <div className="min-h-screen flex flex-col items-center justify-center bg-[#f9fafb]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-primary/20 border-r-4 border-primary"></div>
-          </div>
-        }>
+        <Suspense fallback={<EventDetailSkeleton />}>
           <ServerEventDetail slug={slug} />
         </Suspense>
       </main>

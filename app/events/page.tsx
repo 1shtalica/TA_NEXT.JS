@@ -9,23 +9,24 @@ import type { HomeEventCard } from "@/types/event";
 import { Suspense } from "react";
 import GoToTopButton from "@/components/reusable/GoToTopButton";
 import { EventCardSkeletonList } from "@/components/reusable/EventCard";
+import { SITE_URL } from "@/lib/site";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 export const metadata: Metadata = {
   title: "Cari Event - Kumpulin",
-  description: "Temukan berbagai acara seru di sekitarmu.",
+  description: "Temukan berbagai acara seru, konser, workshop, dan seminar di sekitarmu.",
   alternates: {
     canonical: "/events",
   },
   openGraph: {
     title: "Cari Event - Kumpulin",
-    description: "Temukan berbagai acara seru di sekitarmu.",
+    description: "Temukan berbagai acara seru, konser, workshop, dan seminar di sekitarmu.",
     url: "/events",
     type: "website",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_URL}/og_image.png`,
+        url: "/og_image.png",
         width: 1200,
         height: 630,
         alt: "Banner Resmi Kumpul.in",
@@ -138,8 +139,7 @@ async function ServerEventList({
   );
 }
 
-  const siteUrl =
-    process.env.NEXT_PUBLIC_APP_URL;
+  const siteUrl = SITE_URL;
 
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden bg-[#f9fafb]">
@@ -150,7 +150,7 @@ async function ServerEventList({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
             name: "Cari Event - Kumpulin",
-            description: "Temukan berbagai acara seru di sekitarmu.",
+            description: "Temukan berbagai acara seru, konser, workshop, dan seminar di sekitarmu.",
             url: `${siteUrl}/events`,
           }),
         }}

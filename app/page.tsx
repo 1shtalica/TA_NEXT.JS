@@ -9,6 +9,7 @@ import LandingFooter from "@/components/landingpage/LandingFooter";
 import GoToTopButton from "@/components/reusable/GoToTopButton";
 import { EventService } from "@/services/event-service";
 import type { HomeEventCard } from "@/types/event";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kumpul.in — Platform Event & Manajemen Acara Terlengkap",
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_URL}/og_image.png`,
+        url: "/og_image.png",
         width: 1200,
         height: 630,
         alt: "Banner Resmi Kumpul.in",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
 };
 
 export default async function LandingPage() {
-  const siteUrl =process.env.NEXT_PUBLIC_APP_URL;
+  const siteUrl = SITE_URL;
 
   let heroEvents: HomeEventCard[] = [];
   try {

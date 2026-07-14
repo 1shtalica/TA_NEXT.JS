@@ -138,7 +138,7 @@ export default function ImageSection({ event }: { event: Event }) {
                           fill
                           quality={75}
                           className="object-cover hover:scale-105 transition-transform duration-700"
-                          priority={index === 0}
+                          loading={index === 0 ? "eager" : "lazy"}
                           fetchPriority={index === 0 ? "high" : undefined}
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
                         />

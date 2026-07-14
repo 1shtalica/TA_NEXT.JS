@@ -108,7 +108,7 @@ export default function EventCard({
                             alt={`Banner ${title}`}
                             fill
                             quality={75}
-                            priority={priority}
+                            loading={priority ? "eager" : "lazy"}
                             fetchPriority={priority ? "high" : undefined}
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

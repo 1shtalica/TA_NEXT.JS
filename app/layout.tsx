@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Toaster from "@/components/ui/toaster-lazy";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -9,9 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || "https://kumpulin-post-next.vercel.app"
-  ),
+  metadataBase: new URL(SITE_URL),
   title: "Kumpul.in",
   description: "Kumpulin event management system",
   alternates: {
