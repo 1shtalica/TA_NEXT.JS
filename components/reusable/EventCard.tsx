@@ -131,7 +131,10 @@ export default function EventCard({
                         )}
                     </div>
 
-                    <button className="absolute top-4 right-4 z-10 bg-white p-2 rounded-full text-slate-400 hover:text-red-500 hover:scale-110 transition-all shadow-sm cursor-pointer">
+                    <button
+                        disabled
+                        className="absolute top-4 right-4 z-10 bg-white p-2 rounded-full text-slate-400 shadow-sm cursor-not-allowed opacity-80"
+                    >
                         <Heart size={18} />
                     </button>
                 </div>
