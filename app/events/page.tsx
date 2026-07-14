@@ -109,9 +109,23 @@ async function ServerEventList({
 
   if (error) {
     return (
-      <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-        <p className="text-danger text-sm">{error}</p>
-      </div>
+      <>
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-danger text-sm">{error}</p>
+        </div>
+        <InfiniteEventList
+          initialEvents={[]}
+          initialHasMore={false}
+          initialNextCursor={null}
+          searchQuery={query}
+          typeFilter={typeFilter}
+          categoryFilter={categoryFilter}
+          provinceFilter={provinceFilter}
+          priceFilter={priceFilter}
+          sortOption={sortOption}
+          limit={limit}
+        />
+      </>
     );
   }
 
