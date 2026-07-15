@@ -348,9 +348,9 @@ export default function TicketSection({ event }: { event: Event }) {
                         <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">
                             Registrasi
                         </p>
-                        <div className="text-xl md:text-2xl font-bold text-slate-950 leading-tight">
+                        <h3 className="text-xl md:text-2xl font-bold text-slate-950 leading-tight">
                             Pilih Tiket
-                        </div>
+                        </h3>
                     </div>
 
                     {isRegistrationUpcoming && currentTime && (
@@ -463,7 +463,7 @@ export default function TicketSection({ event }: { event: Event }) {
                                             )}
 
                                         <div className="flex justify-between items-start mb-1">
-                                            <div
+                                            <h4
                                                 className={cn(
                                                     "font-semibold text-sm leading-snug line-clamp-2",
                                                     isSelected
@@ -472,7 +472,7 @@ export default function TicketSection({ event }: { event: Event }) {
                                                 )}
                                             >
                                                 {ticket.name}
-                                            </div>
+                                            </h4>
                                             {isActuallySoldOut && (
                                                 <span className="bg-danger text-white text-[10px] px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">
                                                     Habis

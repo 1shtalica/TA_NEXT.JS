@@ -5,7 +5,7 @@ import EventCard from "@/components/reusable/EventCard";
 import { EventService } from "@/services/event-service";
 import EmptyState from "../reusable/EmptyState";
 
-async function UpcomingEventsGrid() {
+async function UpComingEventsGrid() {
   let events: Awaited<ReturnType<typeof EventService.getEvents>>["data"] = [];
 
   try {
@@ -46,7 +46,7 @@ async function UpcomingEventsGrid() {
   );
 }
 
-export default function UpcomingEvents() {
+export default function UpComingEvents() {
   return (
     <section className="relative overflow-hidden py-12 md:py-16 bg-[#f9fafb]">
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
@@ -83,7 +83,7 @@ export default function UpcomingEvents() {
           </p>
         </div>
 
-        <UpcomingEventsGrid />
+        <UpComingEventsGrid />
       </div>
     </section>
   );

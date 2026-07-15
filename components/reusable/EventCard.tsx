@@ -5,7 +5,6 @@ import Link from "next/link";
 import { MapPin, Users, Heart, ImageOff, Ticket } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
 import { formatCurrency, cn } from "@/lib/utils";
 
 interface EventCardProps {
@@ -122,7 +121,10 @@ export default function EventCard({
                         )}
                     </div>
 
-                    <button className="absolute top-4 right-4 z-10 bg-white p-2 rounded-full text-slate-400 hover:text-red-500 hover:scale-110 transition-all shadow-sm cursor-pointer">
+                    <button
+                        disabled
+                        className="absolute top-4 right-4 z-10 bg-white p-2 rounded-full text-slate-400 shadow-sm cursor-not-allowed opacity-80"
+                    >
                         <Heart size={18} />
                     </button>
                 </div>
@@ -148,12 +150,12 @@ export default function EventCard({
                                 {category}
                             </span>
 
-                            <div
+                            <h3
                                 className="font-bold text-base leading-snug text-slate-900 line-clamp-2"
                                 title={title}
                             >
                                 {title}
-                            </div>
+                            </h3>
 
                             <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-0.5">
                                 <MapPin size={12} className="shrink-0" />
@@ -192,70 +194,5 @@ export default function EventCard({
                 </CardContent>
             </Card>
         </Link>
-    );
-}
-
-export function EventCardSkeleton({
-    variant = "vertical",
-}: {
-    variant?: "vertical" | "horizontal";
-}) {
-    return (
-        <Card
-            className={cn(
-                "h-full flex overflow-hidden rounded-3xl bg-white border shadow-sm",
-                variant === "horizontal" ? "flex-row h-55" : "flex-col",
-            )}
-        >
-            <Skeleton
-                className={cn(
-                    "shrink-0 rounded-none",
-                    variant === "horizontal"
-                        ? "w-65 h-full"
-                        : "w-full aspect-video",
-                )}
-            />
-
-            <CardContent className="flex flex-col p-4 sm:p-5 h-full relative">
-                <div className="flex gap-4 items-start">
-                    <Skeleton className="w-14 h-17 rounded-2xl shrink-0" />
-                    <div className="flex flex-col gap-2 w-full pt-1">
-                        <Skeleton className="h-3 w-1/3" />
-                        <Skeleton className="h-4 w-full" />
-                        <Skeleton className="h-4 w-4/5" />
-                        <div className="flex items-center gap-1.5 mt-2">
-                            <Skeleton className="h-3 w-3 rounded-full" />
-                            <Skeleton className="h-3 w-1/2" />
-                        </div>
-                        <Skeleton className="h-2 w-1/3 mt-2" />
-                    </div>
-                </div>
-
-                <div className="mt-auto pt-6 flex items-end justify-between">
-                    <div className="flex flex-col gap-1">
-                        <Skeleton className="h-4 w-20" />
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                        <Skeleton className="h-4 w-12" />
-                    </div>
-                </div>
-            </CardContent>
-        </Card>
-    );
-}
-
-export function EventCardSkeletonList({
-    count = 4,
-    variant = "vertical",
-}: {
-    count?: number;
-    variant?: "vertical" | "horizontal";
-}) {
-    return (
-        <>
-            {Array.from({ length: count }).map((_, i) => (
-                <EventCardSkeleton key={i} variant={variant} />
-            ))}
-        </>
     );
 }

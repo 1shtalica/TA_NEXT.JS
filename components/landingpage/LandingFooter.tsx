@@ -11,9 +11,9 @@ export default function LandingFooter() {
           <div className="md:col-span-5 flex flex-col gap-6">
             <div className="space-y-3">
               <div className="inline-block">
-                <div className="font-bold text-2xl md:text-3xl tracking-tight text-white flex items-center gap-2">
+                <h2 className="font-bold text-2xl md:text-3xl tracking-tight text-white flex items-center gap-2">
                   <span>🎉</span> kumpul.in
-                </div>
+                </h2>
               </div>
               <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-sm">
                 Ciptakan eventmu dan jangkau ribuan peserta dengan mudah.
@@ -36,7 +36,7 @@ export default function LandingFooter() {
 
           <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
             <div className="flex flex-col gap-4">
-              <div className="font-semibold text-white">Tentang</div>
+              <h4 className="font-semibold text-white">Tentang</h4>
               <div className="flex flex-col gap-2 items-start">
                 <FooterLink href="/">Tentang Kami</FooterLink>
                 <FooterLink href="/">Pusat Bantuan</FooterLink>
@@ -45,7 +45,7 @@ export default function LandingFooter() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <div className="font-semibold text-white">Legal</div>
+              <h4 className="font-semibold text-white">Legal</h4>
               <div className="flex flex-col gap-2 items-start">
                 <FooterLink href="/">Syarat & Ketentuan</FooterLink>
                 <FooterLink href="/">Kebijakan Privasi</FooterLink>
@@ -54,7 +54,7 @@ export default function LandingFooter() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <div className="font-semibold text-white">Hubungi</div>
+              <h4 className="font-semibold text-white">Hubungi</h4>
               <div className="flex flex-col gap-2 items-start">
                 <FooterLink href="/">Email Support</FooterLink>
                 <FooterLink href="/">WhatsApp</FooterLink>

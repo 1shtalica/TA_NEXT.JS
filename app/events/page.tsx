@@ -9,11 +9,6 @@ import GoToTopButton from "@/components/reusable/GoToTopButton";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
-export const metadata = {
-  title: "Cari Event - Kumpulin",
-  description: "Temukan berbagai acara seru di sekitarmu.",
-};
-
 const getProvinceFilter = (value: string) => {
   if (!value || value === "online") return "";
   return (

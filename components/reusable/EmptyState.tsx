@@ -27,9 +27,9 @@ export default function EmptyState({
                     {icon || <Inbox className="h-10 w-10 text-primary drop-shadow-sm" strokeWidth={1.5} />}
                 </div>
 
-                <div className="text-lg font-semibold tracking-tight text-accent mb-2">
+                <h3 className="text-lg font-semibold tracking-tight text-accent mb-2">
                     {title}
-                </div>
+                </h3>
 
                 <p className="text-muted-foreground max-w-sm text-sm leading-relaxed mb-6">
                     {description}
