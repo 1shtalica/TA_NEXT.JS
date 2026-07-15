@@ -131,11 +131,6 @@ async function ServerEventList({
 
   return (
     <>
-      {query && (
-        <div className="mb-6 text-muted text-sm md:text-base">
-          Hasil pencarian untuk <strong>&quot;{query}&quot;</strong>
-        </div>
-      )}
 
       <InfiniteEventList
         initialEvents={initialEvents}
@@ -195,6 +190,12 @@ async function ServerEventList({
             <FilterBar />
           </Suspense>
         </div>
+
+        {query && (
+          <div className="mb-6 text-muted text-sm md:text-base">
+            Hasil pencarian untuk <strong>&quot;{query}&quot;</strong>
+          </div>
+        )}
 
         <Suspense fallback={<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"><EventCardSkeletonList count={12} /></div>}>
           <ServerEventList

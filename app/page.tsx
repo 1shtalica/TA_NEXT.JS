@@ -3,7 +3,7 @@ import LandingNavbar from "@/components/landingpage/LandingNavbar";
 import Hero from "@/components/landingpage/Hero";
 import EventsSuggestion from "@/components/landingpage/EventsSuggestion";
 import PopularCategory from "@/components/landingpage/PopularCategory";
-import UpcomingEvents from "@/components/landingpage/UpcomingEvents";
+import UpComingEvents from "@/components/landingpage/UpComingEvents";
 import CallToAction from "@/components/landingpage/CallToAction";
 import LandingFooter from "@/components/landingpage/LandingFooter";
 import GoToTopButton from "@/components/reusable/GoToTopButton";
@@ -83,7 +83,7 @@ export default async function LandingPage() {
         <Hero initialHeroEvents={heroEvents} />
         <EventsSuggestion />
         <PopularCategory />
-        <UpcomingEvents />
+        <UpComingEvents />
         <CallToAction />
       </main>
       <LandingFooter />

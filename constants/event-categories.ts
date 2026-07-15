@@ -22,20 +22,6 @@ export const APPROVED_EVENT_CATEGORIES = [
   "lainnya",
 ] as const;
 
-export type ApprovedEventCategory = (typeof APPROVED_EVENT_CATEGORIES)[number];
-
-export const isApprovedEventCategory = (
-  category: unknown,
-): category is ApprovedEventCategory =>
-  typeof category === "string" &&
-  APPROVED_EVENT_CATEGORIES.includes(category as ApprovedEventCategory);
-
-export const toApprovedEventCategory = (
-  category: unknown,
-  fallback: ApprovedEventCategory = "lainnya",
-): ApprovedEventCategory =>
-  isApprovedEventCategory(category) ? category : fallback;
-
 export const normalizeEventCategoryList = (payload: unknown): string[] => {
   const items = Array.isArray(payload) ? payload : [];
   const normalized = items
