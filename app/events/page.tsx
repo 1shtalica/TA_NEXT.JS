@@ -94,12 +94,6 @@ export default async function ExplorePage(props: {
           </div>
         )}
 
-        {query && (
-          <div className="mb-6 text-muted text-sm md:text-base">
-            Hasil pencarian untuk <strong>&quot;{query}&quot;</strong>
-          </div>
-        )}
-
         <InfiniteEventList
           initialEvents={initialEvents}
           initialHasMore={initialHasMore}

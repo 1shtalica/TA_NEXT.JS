@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
@@ -9,6 +10,14 @@ export default function SearchBar() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("q")?.toString() ?? "",
+  );
+
+  useEffect(() => {
+    setSearchQuery(searchParams.get("q")?.toString() ?? "");
+  }, [searchParams]);
 
   const updateQuery = (term: string) => {
     const params = new URLSearchParams(searchParams);
@@ -64,8 +73,11 @@ export default function SearchBar() {
               type="text"
               placeholder="Cari konser, workshop, atau seminar..."
               className="w-full h-10 lg:h-12 bg-transparent border-0 shadow-none text-sm md:text-base text-slate-900 placeholder:text-slate-400 font-medium focus-visible:ring-0 focus-visible:ring-offset-0 px-2 pr-4 rounded-none"
-              defaultValue={searchParams.get("q")?.toString()}
-              onChange={(e) => debouncedSearch(e.target.value)}
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                debouncedSearch(e.target.value);
+              }}
               onKeyDown={handleKeyDown}
             />
           </div>
