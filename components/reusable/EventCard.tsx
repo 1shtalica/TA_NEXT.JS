@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { MapPin, Users, Heart, ImageOff, Ticket } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -56,7 +56,14 @@ export default function EventCard({
     variant = "vertical",
 }: EventCardProps) {
     const [imgError, setImgError] = useState(false);
+    const imgRef = useRef<HTMLImageElement>(null);
 
+    useEffect(() => {
+        const el = imgRef.current;
+        if (el && el.complete && el.naturalWidth === 0) {
+            setImgError(true);
+        }
+    }, [image]);
 
     const dateObj = new Date(date);
     const isValidDate = !isNaN(dateObj.getTime());
@@ -99,6 +106,7 @@ export default function EventCard({
                         </div>
                     ) : (
                         <img
+                            ref={imgRef}
                             src={image}
                             alt={`Banner ${title}`}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

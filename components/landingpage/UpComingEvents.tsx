@@ -70,7 +70,7 @@ export default function UpComingEvents() {
             </h2>
             <Button variant="link" asChild className="px-0 md:px-4">
               <Link
-                href="/events?sort=terbaru"
+                href="/events?sort=newest"
                 className="flex items-center gap-1"
               >
                 Lihat Semua <ArrowRight size={18} />

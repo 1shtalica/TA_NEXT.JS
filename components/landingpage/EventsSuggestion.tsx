@@ -72,7 +72,7 @@ export default function EventsSuggestion() {
               Event Pilihan
             </h2>
             <Button variant="link" asChild>
-              <Link href="/events?sort=Populer">
+              <Link href="/events">
                 Lihat Semua <ArrowRight size={18} />
               </Link>
             </Button>

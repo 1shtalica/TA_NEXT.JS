@@ -189,7 +189,7 @@ const buildCategoryCards = (categories: string[]) =>
     getVisibleCategories(categories).map((name) => ({
         value: name,
         name: getCategoryLabel(name),
-        href: `/events?category=${encodeURIComponent(name)}`,
+        href: isOtherCategory(name) ? "/events" : `/events?category=${encodeURIComponent(name)}`,
         ...getCategoryPresentation(name),
     }));
 
