@@ -256,9 +256,9 @@ function EventCardStack({ events }: { events: HomeEventCard[] }) {
                                 {tag.text}
                             </span>
                         </div>
-                        <div className="relative text-lg font-extrabold text-slate-900 leading-tight mb-4 line-clamp-2">
+                        <h3 className="relative text-lg font-extrabold text-slate-900 leading-tight mb-4 line-clamp-2">
                             {ev.title}
-                        </div>
+                        </h3>
                         <div className="relative flex flex-col gap-2 mb-5">
                             <div className="flex items-center gap-2 text-slate-500 text-sm">
                                 <MapPin size={14} className="shrink-0" />
@@ -376,9 +376,9 @@ function MobileEventStrip({ events }: { events: HomeEventCard[] }) {
                                         {tag.text}
                                     </span>
                                 </div>
-                                <p className="relative text-sm font-extrabold text-slate-900 leading-tight mb-2 line-clamp-2">
+                                <h3 className="relative text-sm font-extrabold text-slate-900 leading-tight mb-2 line-clamp-2">
                                     {ev.title}
-                                </p>
+                                </h3>
                                 <div className="relative flex items-center gap-3 text-xs text-slate-400 mb-3">
                                     <span className="flex items-center gap-1">
                                         <MapPin size={11} />
@@ -508,7 +508,7 @@ export default function HeroSection() {
                             </span>
                         </div>
 
-                        <div className="text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] lg:text-[3.8rem] font-extrabold text-slate-900 leading-[1.1] tracking-[-0.02em]">
+                        <h1 className="text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] lg:text-[3.8rem] font-extrabold text-slate-900 leading-[1.1] tracking-[-0.02em]">
                             Satu tempat
                             <br />
                             semua{" "}
@@ -519,7 +519,7 @@ export default function HeroSection() {
                             <span className="text-slate-300">
                                 di Indonesia.
                             </span>
-                        </div>
+                        </h1>
 
                         <p className="text-sm sm:text-base lg:text-lg text-slate-500 leading-relaxed max-w-lg font-medium">
                             Dari konser jazz malam hari hingga hackathon

@@ -65,9 +65,9 @@ export default function UpComingEvents() {
       <div className="relative z-10 container mx-auto px-4 md:px-8 lg:px-12 w-full max-w-7xl">
         <div className="flex flex-col gap-3 mb-8">
           <div className="flex items-center justify-between">
-            <div className="text-xl md:text-3xl font-bold text-accent">
+            <h2 className="text-xl md:text-3xl font-bold text-accent">
               Event Segera Hadir
-            </div>
+            </h2>
             <Button variant="link" asChild className="px-0 md:px-4">
               <Link
                 href="/events?sort=terbaru"

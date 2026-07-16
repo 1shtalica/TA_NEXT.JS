@@ -68,9 +68,9 @@ export default function EventsSuggestion() {
       <div className="relative z-10 container mx-auto px-4 md:px-8 lg:px-12 w-full max-w-7xl">
         <div className="flex flex-col gap-2 mb-8 md:mb-12">
           <div className="flex items-center justify-between">
-            <div className="text-xl md:text-3xl font-bold text-accent">
+            <h2 className="text-xl md:text-3xl font-bold text-accent">
               Event Pilihan
-            </div>
+            </h2>
             <Button variant="link" asChild>
               <Link href="/events?sort=Populer">
                 Lihat Semua <ArrowRight size={18} />
