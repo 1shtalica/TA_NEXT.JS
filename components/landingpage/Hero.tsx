@@ -34,7 +34,7 @@ function formatEventDate(dateStr: string): string {
     if (!dateStr) return "-";
     const date = new Date(dateStr);
     if (isNaN(date.getTime())) return "-";
-    return date.toLocaleDateString("id-ID", { day: "numeric", month: "short" });
+    return date.toLocaleDateString("id-ID", { day: "numeric", month: "short", timeZone: "UTC" });
 }
 
 function getEventTag(ev: HomeEventCard): { text: string; className: string } {

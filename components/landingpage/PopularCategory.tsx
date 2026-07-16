@@ -28,9 +28,9 @@ import {
     Tag,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { EventService } from "@/services/event-service";
+import { APPROVED_EVENT_CATEGORIES } from "@/constants/event-categories";
 
 const CATEGORY_PRESENTATION = {
     Pendidikan: {
@@ -194,8 +194,9 @@ const buildCategoryCards = (categories: string[]) =>
     }));
 
 export default function PopularCategory() {
-    const [categoryNames, setCategoryNames] = useState<string[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [categoryNames, setCategoryNames] = useState<string[]>([
+        ...APPROVED_EVENT_CATEGORIES,
+    ]);
     const categories = buildCategoryCards(categoryNames);
 
     useEffect(() => {
@@ -205,7 +206,6 @@ export default function PopularCategory() {
             const fetchedCategories = await EventService.getEventCategories();
             if (!ignore) {
                 setCategoryNames(fetchedCategories);
-                setIsLoading(false);
             }
         };
 
@@ -238,9 +238,7 @@ export default function PopularCategory() {
                     <div className="max-w-2xl">
                         <div className="mb-2 inline-flex items-center gap-2 rounded-2xl bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 shadow-sm ring-1 ring-slate-200">
                             <Sparkles size={13} className="text-primary" />
-                            {isLoading
-                                ? "Memuat kategori"
-                                : `${categories.length} kategori tersedia`}
+                            {`${categories.length} kategori tersedia`}
                         </div>
                         <h2 className="text-xl font-bold text-accent md:text-3xl">
                             Kategori Populer
@@ -262,21 +260,7 @@ export default function PopularCategory() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-3.5">
-                    {isLoading ? (
-                        Array.from({ length: MAX_VISIBLE_CATEGORIES }).map(
-                            (_, index) => (
-                                <Skeleton
-                                    key={index}
-                                    className={cn(
-                                        "min-h-30 rounded-xl md:min-h-32",
-                                        index === 0 &&
-                                            "md:col-span-2 md:row-span-2 md:min-h-68",
-                                    )}
-                                />
-                            ),
-                        )
-                    ) : (
-                        categories.map((category, index) => (
+                    {categories.map((category, index) => (
                         <Link
                             key={category.value}
                             href={category.href}
@@ -383,8 +367,7 @@ export default function PopularCategory() {
                                 </div>
                             </div>
                         </Link>
-                        ))
-                    )}
+                    ))}
                 </div>
             </div>
         </section>
