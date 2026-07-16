@@ -11,6 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { ImageOff } from "lucide-react";
 
 import Autoplay from "embla-carousel-autoplay";
 
@@ -18,6 +19,7 @@ export default function ImageSection({ event }: { event: Event }) {
   const [isVisible, setIsVisible] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [blurOpacity, setBlurOpacity] = useState(1);
+  const [failedIndexes, setFailedIndexes] = useState<Set<number>>(new Set());
 
   const allImages = event.images ?? [];
   const primaryImage = allImages.find((img) => img.is_primary)?.image_url
@@ -131,11 +133,23 @@ export default function ImageSection({ event }: { event: Event }) {
                                       xl:h-120
                                       max-h-120"
                       >
-                        <img
-                          src={src}
-                          alt={`${event.title} - Poster ${index + 1}`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                        />
+                        {failedIndexes.has(index) ? (
+                          <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 text-slate-400">
+                            <ImageOff size={32} className="mb-2 opacity-50" />
+                            <span className="text-xs font-medium">
+                              Image not available
+                            </span>
+                          </div>
+                        ) : (
+                          <img
+                            src={src}
+                            alt={`${event.title} - Poster ${index + 1}`}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                            onError={() =>
+                              setFailedIndexes((prev) => new Set(prev).add(index))
+                            }
+                          />
+                        )}
                       </div>
 
                     </CarouselItem>
