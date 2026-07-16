@@ -1,3 +1,4 @@
+import { cache } from "react";
 import type { EventListResult, EventPagination, GetEventsParams, HomeEventCard, Event } from "@/types/event";
 import { APPROVED_EVENT_CATEGORIES, normalizeEventCategoryList } from "@/constants/event-categories";
 
@@ -56,12 +57,12 @@ export const EventService = {
     return data.data || [];
   },
 
-  async getEventBySlug(slug: string): Promise<Event | null> {
+  getEventBySlug: cache(async (slug: string): Promise<Event | null> => {
     const response = await fetch(`${API_URL}/events/${slug}`, { cache: "no-store" });
     if (!response.ok) return null;
     const json = await response.json();
     return json.data ?? null;
-  },
+  }),
 
   async getEventCategories(): Promise<string[]> {
     try {
